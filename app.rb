@@ -3,10 +3,11 @@ require 'google/api_client/client_secrets'
 require 'json'
 require 'sinatra'
 require 'pry'
-require 'HTTParty'
+require 'httparty'
 require 'github_api'
 require 'oauth'
 require 'dotenv'
+
 Dotenv.load
 
 enable :sessions
