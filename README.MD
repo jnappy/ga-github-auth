@@ -10,7 +10,7 @@ To get it running locally, you'll need to set a `.env` file with the following:
 
 - a CLIENT_ID from GitHub.com
 - a CLIENT_SECRET from GitHub.com 
-- a GITHUB_ACCESS_TOKEN from **[GA-WDI](https://github.com/ga-wdi) owner** 
+- a GITHUB_ACCESS_TOKEN from a **[GA-WDI](https://github.com/ga-wdi) owner** 
 
 The `.env` file should look like:
 
