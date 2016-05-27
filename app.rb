@@ -20,7 +20,6 @@ end
 get '/oauth-request' do
 
   $course = @params['course']
-  binding.pry
 
   unless session.has_key?(:credentials)
     redirect to('/oauth2callback')
