@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+
+gem 'google-api-client', '0.9'
+gem 'json'
+gem 'sinatra'
+gem 'pry'
+gem 'httparty'
+gem 'github_api'
+gem 'oauth'
+gem 'rest-client', '1.6'
+gem 'dotenv'
