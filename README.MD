@@ -1,4 +1,4 @@
-## Automated GitHub Permissions for GA WDI Instructors
+# Give Me Curriculum
 
 This is a simple Sinatra app that uses Gmail and GitHub OAuth to grant full-time instructors access to the appropriate course materials hosted on GitHub. 
 
