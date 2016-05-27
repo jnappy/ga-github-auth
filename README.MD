@@ -6,16 +6,15 @@ Those requesting access must have a General Assembly email address and a GitHub 
 
 ## Running the App
 
-To get it running locally, you'll need to set a .env file with the following:
+To get it running locally, you'll need to set a `.env` file with the following:
 
 - a CLIENT_ID from GitHub.com
 - a CLIENT_SECRET from GitHub.com 
-- a GITHUB_ACCESS_TOKEN from an owner's account on GitHub.com 
+- a GITHUB_ACCESS_TOKEN from **[GA-WDI](https://github.com/ga-wdi) owner** 
 
-The file should look like:
+The `.env` file should look like:
 
-```.env
-
+```
 CLIENT_ID = "alphanumericstring"
 CLIENT_SECRET = "alphanumericstring"
 GITHUB_ACCESS_TOKEN = "alphanumericstring"
@@ -29,7 +28,7 @@ $ bundle install
 
 ...and then: 
 
-```
+```bash
 $ ruby app.rb
 ```
 
