@@ -25,7 +25,6 @@ get '/oauth-request' do
     redirect to('/oauth2callback')
   end
 
-  binding.pry
   client_opts = JSON.parse(session[:credentials])
   id_token = client_opts["id_token"]
   email_address = HTTParty.get("https://www.googleapis.com/oauth2/v1/tokeninfo?id_token=" + id_token)['email']
@@ -105,7 +104,6 @@ get '/github-callback' do
 
     if ($ga_email and @github_ga_email)
        grant_permission(@github_ga_login, access_token) 
-       binding.pry
        if $course == "wdi" 
           redirect to("https://github.com/ga-wdi") 
         else     
