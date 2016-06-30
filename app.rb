@@ -17,9 +17,13 @@ get '/' do
   erb :index
 end
 
+get '/destroy-session' do
+  session.clear
+end
+
 get '/oauth-request' do
 
-  $course = @params['course']
+  $course = @params['course'] if $course == nil
 
   unless session.has_key?(:credentials)
     redirect to('/oauth2callback')
