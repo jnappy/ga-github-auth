@@ -25,6 +25,7 @@ get '/oauth-request' do
     redirect to('/oauth2callback')
   end
 
+  binding.pry
   client_opts = JSON.parse(session[:credentials])
   id_token = client_opts["id_token"]
   email_address = HTTParty.get("https://www.googleapis.com/oauth2/v1/tokeninfo?id_token=" + id_token)['email']
@@ -39,7 +40,11 @@ end
 
 get '/oauth2callback' do
 
-  client_secrets = Google::APIClient::ClientSecrets.new(JSON.parse(ENV['GOOGLE_CLIENT_SECRET']))
+  if File.exists?('client_secrets.json')
+    client_secrets = Google::APIClient::ClientSecrets.load
+  else
+    client_secrets = Google::APIClient::ClientSecrets.new(JSON.parse(ENV['GOOGLE_CLIENT_SECRET']))
+  end
   auth_client = client_secrets.to_authorization
 
   auth_client.update!(
