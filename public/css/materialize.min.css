@@ -40,14 +40,18 @@ nav {
 #mahk {
     display: block;
     margin: 0 auto;
+    border-radius: 100px; 
 }
 
 #logo {
 	padding: 1%;
 }
 
-#mahk {
+
+#mahk-main {
 	border-radius: 100px; 
+	float: right;
+	box-shadow: 10px 14px 31px -5px;
 }
 
 #main {
