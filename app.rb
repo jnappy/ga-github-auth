@@ -33,7 +33,7 @@ get '/oauth-request' do
   if $ga_email 
     redirect to("https://github.com/login/oauth/authorize?scope=user:email&client_id=#{ENV['CLIENT_ID']}&ga=1") 
   else
-    "Sorry, you can only request access to a GitHub account with a General Assembly email address"
+    erb :denied
   end
 end
 
@@ -100,20 +100,28 @@ get '/github-callback' do
 
     if ($ga_email and @github_ga_email)
        grant_permission(@github_ga_login, access_token) 
+       binding.pry
        if $course == "wdi" 
           redirect to("https://github.com/ga-wdi") 
         else     
-          "Currently, we don't have support for courses other than WDI - sorry!"
+          redirect to("https://github.com/generalassembly-studio") 
         end
     else
-      "Sorry, your GA email must be linked to the GitHub account you're requesting access to"
+      erb :denied
     end
 
 end
 
 
 def grant_permission(user_name, access_token)
-  team_ids = {"wdi" => "1744213"}
+
+  team_ids = {
+    "wdi" => "1744213", 
+    "dsi" => "2020932", 
+    "adi" => "1869399", 
+    "iosi" => "2062807"
+  }
+
   team_id = team_ids[$course]
   url = "https://api.github.com/teams/#{team_id}/memberships/#{user_name}?access_token="   
 
@@ -127,6 +135,7 @@ def grant_permission(user_name, access_token)
       'user_name' => 'jnappy'
     }
   }
+
   # this code below needs to have the owner access token, not the user's acces token 
   HTTParty.put(url + ENV['GITHUB_ACCESS_TOKEN'], options)
 end
