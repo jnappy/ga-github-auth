@@ -39,7 +39,7 @@ end
 
 get '/oauth2callback' do
 
-  client_secrets = Google::APIClient::ClientSecrets.load
+  client_secrets = Google::APIClient::ClientSecrets.new(JSON.parse(ENV['GOOGLE_CLIENT_SECRET']))
   auth_client = client_secrets.to_authorization
 
   auth_client.update!(
